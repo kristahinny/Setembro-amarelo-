@@ -72,21 +72,16 @@
 
     <script>
         const questions = [
-            "Qual foi o momento mais feliz da sua vida recentemente?",
-            "O que você mais gosta de fazer no seu tempo livre?",
-            "Qual é a sua maior paixão ou hobby?",
-            "Qual foi a última coisa que te fez sorrir de verdade?",
-            "O que você mais valoriza em uma amizade?",
-            "Qual foi o maior desafio que você superou na sua vida?",
-            "O que você mais se orgulha de ter conquistado até agora?",
-            "Como você descreveria suas maiores qualidades?",
-            "Qual foi o momento em que você se sentiu mais realizado?",
-            "Quem são as pessoas que mais te inspiram e por quê?",
-            "Como você gostaria de ser lembrado pelas pessoas?",
-            "Qual é o seu maior talento e como você o desenvolveu?",
-            "O que você acredita que te diferencia dos outros?",
-            "Qual foi o feedback mais positivo que você já recebeu?",
-            "Como você lida com os momentos de sucesso e reconhecimento?"
+            "O que posso controlar agora?",
+            "Quais são três coisas pelas quais sou grato(a) hoje?",
+            "O que posso fazer para cuidar melhor de mim neste momento?",
+            "Existe uma solução prática para o que estou sentindo?",
+            "Como me sentiria se tudo isso fosse resolvido?",
+            "Qual foi a última vez que enfrentei algo difícil e superei?",
+            "Estou me antecipando a problemas que talvez nunca aconteçam?",
+            "O que me traz conforto ou alegria? Posso fazer isso agora?",
+            "Se eu fosse meu(a) melhor amigo(a), o que eu diria a mim mesmo(a) agora?",
+            "Qual é a menor coisa que posso fazer agora para me sentir melhor?"
         ];
 
         function startQuestions() {
@@ -117,7 +112,7 @@
             const responses = {};
             questions.forEach((_, index) => {
                 const response = document.getElementById(`q${index}`).value;
-                responses[`Question ${index + 1}`] = response;
+                responses[`Pergunta ${index + 1}`] = response;
             });
 
             console.log('Respostas:', responses);
