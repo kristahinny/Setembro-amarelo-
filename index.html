@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .question input, .question textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div id="intro">
+            <div class="question">
+                <label for="name">Qual é o seu nome?</label>
+                <input type="text" id="name">
+            </div>
+            <div class="question">
+                <label for="age">Quantos anos você tem?</label>
+                <input type="number" id="age">
+            </div>
+            <div class="question">
+                <label for="profession">Qual é a sua profissão?</label>
+                <input type="text" id="profession">
+            </div>
+            <button class="button" onclick="startQuestions()">Próximo</button>
+        </div>
+        <div id="questions" style="display: none;">
+            <!-- Perguntas serão inseridas aqui pelo JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            "Qual foi o momento mais feliz da sua vida recentemente?",
+            "O que você mais gosta de fazer no seu tempo livre?",
+            "Qual é a sua maior paixão ou hobby?",
+            "Qual foi a última coisa que te fez sorrir de verdade?",
+            "O que você mais valoriza em uma amizade?",
+            "Qual foi o maior desafio que você superou na sua vida?",
+            "O que você mais se orgulha de ter conquistado até agora?",
+            "Como você descreveria suas maiores qualidades?",
+            "Qual foi o momento em que você se sentiu mais realizado?",
+            "Quem são as pessoas que mais te inspiram e por quê?",
+            "Como você gostaria de ser lembrado pelas pessoas?",
+            "Qual é o seu maior talento e como você o desenvolveu?",
+            "O que você acredita que te diferencia dos outros?",
+            "Qual foi o feedback mais positivo que você já recebeu?",
+            "Como você lida com os momentos de sucesso e reconhecimento?"
+        ];
+
+        function startQuestions() {
+            document.getElementById('intro').style.display = 'none';
+            const questionsDiv = document.getElementById('questions');
+            questionsDiv.innerHTML = '';
+
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <label for="q${index}">${question}</label>
+                    <textarea id="q${index}" rows="3"></textarea>
+                `;
+                questionsDiv.appendChild(questionDiv);
+            });
+
+            const submitButton = document.createElement('button');
+            submitButton.className = 'button';
+            submitButton.innerText = 'Enviar Respostas';
+            submitButton.onclick = submitResponses;
+            questionsDiv.appendChild(submitButton);
+
+            questionsDiv.style.display = 'block';
+        }
+
+        function submitResponses() {
+            const responses = {};
+            questions.forEach((_, index) => {
+                const response = document.getElementById(`q${index}`).value;
+                responses[`Question ${index + 1}`] = response;
+            });
+
+            console.log('Respostas:', responses);
+            alert('Obrigado por participar!');
+        }
+    </script>
+</body>
+</html>
